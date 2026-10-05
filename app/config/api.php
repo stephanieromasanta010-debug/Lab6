@@ -33,7 +33,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
  * @link https://github.com/ronmarasigan/LavaLust
  * @license https://opensource.org/licenses/MIT MIT License
  */
-
+ 
 /*
 |--------------------------------------------------------------------------
 | Enable/Disable API Helper
@@ -44,8 +44,8 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 | below (see their notes). The API library refuses to start otherwise.
 |
 */
-$config['api_helper_enabled'] = FALSE;
-
+$config['api_helper_enabled'] = TRUE;
+ 
 /*
 |--------------------------------------------------------------------------
 | Payload Token Expiration
@@ -55,8 +55,8 @@ $config['api_helper_enabled'] = FALSE;
 |
 */
 $config['payload_token_expiration'] = 900;
-
-
+ 
+ 
 /*
 |--------------------------------------------------------------------------
 | Refresh Token Expiration
@@ -66,7 +66,7 @@ $config['payload_token_expiration'] = 900;
 |
 */
 $config['refresh_token_expiration'] = 604800;
-
+ 
 /*
 |--------------------------------------------------------------------------
 | JWT Secret Token
@@ -87,8 +87,8 @@ $config['refresh_token_expiration'] = 604800;
 | committed or exposed, rotate it. All existing tokens become invalid.
 |
 */
-$config['jwt_secret'] = getenv('JWT_SECRET') ?: '';
-
+$config['jwt_secret'] = getenv('JWT_SECRET');
+ 
 /*
 |--------------------------------------------------------------------------
 | Refresh Token
@@ -106,8 +106,8 @@ $config['jwt_secret'] = getenv('JWT_SECRET') ?: '';
 |   php -r "echo bin2hex(random_bytes(32));"
 |
 */
-$config['refresh_token_key'] = getenv('REFRESH_TOKEN_KEY') ?: '';
-
+$config['refresh_token_key'] = getenv('REFRESH_TOKEN_KEY');
+ 
 /*
 |--------------------------------------------------------------------------
 | Verify User On Each Request
@@ -122,7 +122,7 @@ $config['refresh_token_key'] = getenv('REFRESH_TOKEN_KEY') ?: '';
 |
 */
 $config['jwt_verify_user'] = TRUE;
-
+ 
 /*
 |--------------------------------------------------------------------------
 | Users Table
@@ -134,7 +134,7 @@ $config['jwt_verify_user'] = TRUE;
 |
 */
 $config['users_table'] = 'users';
-
+ 
 /*
 |--------------------------------------------------------------------------
 | Access-Control-Allow-Origin
@@ -146,7 +146,7 @@ $config['users_table'] = 'users';
 |
 */
 $config['allow_origin'] = '*';
-
+ 
 /*
 |--------------------------------------------------------------------------
 | Refresh Token Table
@@ -156,7 +156,7 @@ $config['allow_origin'] = '*';
 |
 */
 $config['refresh_token_table'] = 'refresh_tokens';
-
+ 
 /*
 |--------------------------------------------------------------------------
 | JWT Issuer
@@ -165,8 +165,8 @@ $config['refresh_token_table'] = 'refresh_tokens';
 | application's name or URL.
 |
 */
-$config['jwt_issuer'] = 'your-app';
-
+$config['jwt_issuer'] = getenv('JWT_ISSUER') ?: 'http://localhost';
+ 
 /*
 |--------------------------------------------------------------------------
 | JWT Audience
@@ -175,9 +175,9 @@ $config['jwt_issuer'] = 'your-app';
 | the clients allowed to use the tokens.
 |
 */
-
-$config['jwt_audience'] = 'your-app-clients';
-
+ 
+$config['jwt_audience'] = getenv('JWT_AUDIENCE') ?: 'http://localhost';
+ 
 /*
 |--------------------------------------------------------------------------
 | Rate Limiting
@@ -186,17 +186,17 @@ $config['jwt_audience'] = 'your-app-clients';
 |
 */
 $config['rate_limit_enabled'] = true;
-
+ 
 /*
 |--------------------------------------------------------------------------
 | Rate Limiting Requests and Seconds
 |--------------------------------------------------------------------------
-| These settings define the number of requests allowed and the time 
+| These settings define the number of requests allowed and the time
 | window in seconds.
 |
 */
 $config['rate_limit_requests'] = 60;
-
+ 
 /*
 |--------------------------------------------------------------------------
 | Rate Limiting Seconds
